@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Board {
 
-    private static final int BOARD_ROWS = 6;
-    private static final int BOARD_COLUMNS = 7;
+    public static final int BOARD_ROWS = 6;
+    public static final int BOARD_COLUMNS = 7;
 
     // Leeres 6x7 Array: d.h. alle Positionen sind null
     // Deswegen braucht es initSquares
