@@ -90,22 +90,26 @@ public class Game {
 
     private boolean checkDiagonalWinTopLeftBottomRight() {
 
-        for (int i=0; i<Board.BOARD_COLUMNS; i++) {
+        int maxColIndex = Board.BOARD_COLUMNS-3;
+        for (int i=0; i<Board.BOARD_COLUMNS-1; i++) {
+            winCounter = 0;
+            // Bestimme Start der Diagonale (mit Optimierung)
+            int rowIndex = i >= maxColIndex ? i % (maxColIndex-1) : 0; ;
+            int colIndex = i >= maxColIndex ? 0 : i;
 
-            // Bestimme Start der Diagonale
-            int rowIndex = 0;
-            int colIndex = i;
             System.out.println(rowIndex + ", " + colIndex);
-            System.out.println();
+
             while(colIndex < Board.BOARD_COLUMNS && rowIndex < Board.BOARD_ROWS) {
 
-                System.out.println(rowIndex + ", " + colIndex);
+                countIfPieceAtPositionOfCurrentPlayerColor(rowIndex, colIndex);
+                if (winCounter == 4) return true;
                 // Diagonale Bewegung
                 rowIndex++;
                 colIndex++;
             }
-            System.out.println();
+
         }
+
         return false;
     }
 
