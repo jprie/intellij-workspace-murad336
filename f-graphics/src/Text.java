@@ -45,11 +45,13 @@ public class Text implements Printable, Drawable {
         System.out.println("Format Text for beautiful printing");
     }
 
+    // Implementierung von Drawable
     @Override
     public void draw() {
         System.out.println("Draw a Text");
     }
 
+    // Implementierung von Erasable
     @Override
     public void erase() {
         System.out.println("Erase a Text");

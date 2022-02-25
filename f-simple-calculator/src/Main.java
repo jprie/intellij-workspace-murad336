@@ -1,17 +1,14 @@
+import java.util.function.BinaryOperator;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        // 1. Variante: Definition und Instanzierung getrennt
         PlusOperation plusOperation = new PlusOperation();
-        double sum = plusOperation.execute(2.3, 5.6);
+        double result = plusOperation.execute(2.3, 4.5);
 
-        CalculatorOperation calculatorOperationPlus = plusOperation;
-        double sum2 = calculatorOperationPlus.execute(3.4, 7.2);
-
-        // Anonyme Klasse
-        // Definiert ein Klasse
-        // Implementiert ein Interface
-        // Und es instantiiert die Klasse
+        // 2. Variante: anonyme Klasse
         CalculatorOperation minusOperation = new CalculatorOperation() {
             @Override
             public double execute(double op1, double op2) {
@@ -19,60 +16,34 @@ public class Main {
             }
         };
 
+        // 3. Variante: Lambda Expression
+        // Definiert nurmehr die Beziehung zwischen Input und Output
+        CalculatorOperation multiplyOperation = (double op1, double op2) -> op1 * op2;
 
+        // 3a. Variante: Mehr-zeilige Lambda expression
+        CalculatorOperation divideOperation = (double op1, double op2) -> {
 
+            if (op2 == 0) {
+                throw new ArithmeticException("/ by 0");
+            }
+            return op1 / op2;
+        };
 
-        // Lambda-Variante sind beschränkt auf FunctionalInterfaces
-        CalculatorOperation multiplyOperation = (double op1, double op2) -> { return op1 * op2; };
+        // 4. Variante: Methoden-Referenzen
+        CalculatorOperation powOperation = Main::pow;
 
+        // Verwende Referenz auf vorhandene Methode der Math-Klasse
+        CalculatorOperation maxOperation = Math::max;
 
-        multiplyOperation.execute(2.3, 5.6);
-        multiplyOperation.execute(2.3, 5.6);
-        multiplyOperation.execute(2.3, 5.6);
-        multiplyOperation.execute(2.3, 5.6);
-        multiplyOperation.execute(2.3, 5.6);
+        // Verwendung eines vorhandenen FunctionalInterface aus der Java API
+        BinaryOperator<Double> moduloOperation = (Double op1, Double op2) -> op1 % op2;
 
-        CalculatorOperation[] calculatorOperations = {plusOperation, minusOperation, multiplyOperation};
-
-        double a = 2.3;
-        double b = 4.5;
-        for (CalculatorOperation op : calculatorOperations) {
-
-            System.out.println(op.execute(a, b));
-        }
-
-
-        // Annahme: wir bekommen über die UI einen Operator als String
-
-        // Scanner blablabla
-        String operatorString = "+";
-
-        try {
-            CalculatorOperation op = getCalculatorOperationFromString(operatorString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // apply ist die zu implementierende Methode im FunctionalInterface BinaryOperator
+        Double moduloResult = moduloOperation.apply(2.4, 6.7);
     }
 
-    private static CalculatorOperation getCalculatorOperationFromString(String operatorString) throws Exception {
-        CalculatorOperation op = null;
-        switch (operatorString) {
-            case "+":
-                op = (op1, op2) -> op1+op2;
-                break;
-            case "-":
-                op = (op1, op2) -> op1-op2;
-                break;
-            case "*":
-                op = (op1, op2) -> op1*op2;
-                break;
-            case "/":
-                op = (op1, op2) -> op1/op2;
-                break;
-            default:
-                throw new Exception("Unknown operator");
-        }
+    private static double pow(double op1, double op2) {
 
-        return op;
+        return Math.pow(op1, op2);
     }
 }

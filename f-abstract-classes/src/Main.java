@@ -15,9 +15,11 @@ public class Main {
         for (TaxedDog t : taxedDogs) {
             System.out.println("Dog with id: " + t.getTaxId() + ": " + t.getTaxes());
 
+            // nicht möglich, das TaxedDog-Referenz
+//            t.barkForAlarm();
             // Frage: wie kann ich in dieser Schleife die Wachhunde im Array bellen lassen?
-            if (t instanceof WatchDog) {
-                WatchDog watchDog1 = (WatchDog) t; // Cast
+            if (t instanceof WatchDog watchDog1) {
+//                WatchDog watchDog1 = (WatchDog) t; // Cast
                 // t.barkForAlarm();
                 watchDog1.barkForAlarm();
                 watchDog1.getTaxId();

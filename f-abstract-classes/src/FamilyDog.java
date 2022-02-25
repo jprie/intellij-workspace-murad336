@@ -6,4 +6,6 @@ public abstract class FamilyDog extends TaxedDog {
     protected FamilyDog(String taxId) {
         super(taxId);
     }
+
+    // abstract int getTaxes();
 }
