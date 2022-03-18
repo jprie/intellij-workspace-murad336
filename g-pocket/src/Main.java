@@ -1,3 +1,8 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeSet;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -33,5 +38,24 @@ public class Main {
 
         // Generische Methode aufrufen
         Pocket.printPocket(stringPocket);
+
+        // Das Schlüsselwort var
+        var doublePocket = new Pocket<Double>(2.3);
+        Pocket<Double> doublePocket1 = new Pocket<Double>(2.3);
+
+        Pocket<ArrayList<String>> pocketOfArrayListOfString;
+        HashMap<String, Integer> hashOfStringAndInteger;
+        HashMap<String, TreeSet<Integer> > hashMapOfStringAndTreeSetOfInteger;
+
+        // var für komplexe generische Typ
+        var complexList = new ArrayList<HashMap<String, TreeSet<Integer>>>();
+        ArrayList<HashMap<String, TreeSet<Integer> > > complexListLong = new ArrayList<HashMap<String, TreeSet<Integer>>>();
+
+
+
+
+
+
+
     }
 }

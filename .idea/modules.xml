@@ -12,6 +12,8 @@
       <module fileurl="file://$PROJECT_DIR$/f-graphics/f-graphics.iml" filepath="$PROJECT_DIR$/f-graphics/f-graphics.iml" />
       <module fileurl="file://$PROJECT_DIR$/f-simple-calculator/f-simple-calculator.iml" filepath="$PROJECT_DIR$/f-simple-calculator/f-simple-calculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/g-pocket/g-pocket.iml" filepath="$PROJECT_DIR$/g-pocket/g-pocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/h-used-cars.iml" filepath="$PROJECT_DIR$/h-used-cars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/h-usedcars/h-usedcars.iml" filepath="$PROJECT_DIR$/h-usedcars/h-usedcars.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/intellij-workspace-murad336.iml" filepath="$PROJECT_DIR$/.idea/intellij-workspace-murad336.iml" />
     </modules>
   </component>
