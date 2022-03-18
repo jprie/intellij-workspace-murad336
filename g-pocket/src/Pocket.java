@@ -3,7 +3,7 @@ public class Pocket<T> {
     // Klassen-Methode
     // Da bei Klassen-Erstellung noch kein Typ-Parameter übergeben wird (erst bei Objekt-Erstellung)
     // MUSS der Typ-Parameter <T> bei Aufruf der Methode übergeben werden.
-    static <T> void printPocket(Pocket<T> pocket) {
+    public static <T> void printPocket(Pocket<T> pocket) {
 
         System.out.println(pocket);
     }
