@@ -22,68 +22,40 @@ public class Main {
         ArrayList<Car> cars = new ArrayList<>(initList);
         printCars(cars);
 
-        // Sortieren nach Model-Name
+        // Neu alle Methoden-Referenzen
+
+        // Typ 1: statische Methode
+        //Cars.compareByModel()
+        Collections.sort(cars, Cars::compareByModel);
+
+        // Typ 2: Objekt-Methode
         ModelComparator modelComparator = new ModelComparator();
+        //modelComparator.compare() - der Aufruf der Methode vergleicht nur 2 Cars
+        Collections.sort(cars, modelComparator::compare); // Vergleicht alle Cars miteinander
+        cars.sort(modelComparator); // tut genau das Gleiche (ruft per default die einzig mögliche Methode auf)
+        cars.sort(modelComparator::compare); // tut auch genau das Gleiche
 
-        // sort sortiert 'in-place', original Array wird verändert
-        cars.sort(modelComparator);
-        printCars(cars);
-
-        // Sortiere nach maxSpeed
-        MaxSpeedComparator maxSpeedComparator = new MaxSpeedComparator();
-        cars.sort(maxSpeedComparator);
-        printCars(cars);
-
-        // Sortiere nach Preis
-
-        Comparator<Car> priceComparator = new Comparator<Car>() {
-            @Override
-            public int compare(Car o1, Car o2) {
-                return (int)(o1.getPrice() - o2.getPrice());
-            }
-        };
-
-        cars.sort(priceComparator);
-        Collections.sort(cars, priceComparator);
-        printCars(cars);
-
-        // Sortiere nach buildDate
-        Comparator<Car> buildDateComparator = (Car c1, Car c2) -> c1.getBuildDate().compareTo(c2.getBuildDate());
-
-        cars.sort(buildDateComparator);
-        Collections.sort(cars, buildDateComparator);
-        printCars(cars);
-
-        // Mit Comparable vergleichen (wird nicht wirklich so verwendet)
-        int result = cars.get(0).compareTo(cars.get(1));
-
-        // Nach natürlicher Reihenfolge (definiert in Car) sortieren
-        Collections.sort(cars);
-
-        // Mit bestimmntem Comparator sortieren
-        Collections.sort(cars, modelComparator);
-        cars.sort(modelComparator);
-
-        // Nach Type sortieren (mit Methodenreferenz)
-        Collections.sort(cars, Main::compareByType);
-
-        // Nach maxSpeed sortieren (mit Methodenreferenz)
-        Collections.sort(cars, Cars::compareByMaxSpeed);
-
-        Cars.compareByMaxSpeed(cars.get(0), cars.get(1));
-
-        // Nach natürlicher Reihenfolge sortieren
-        Collections.sort(cars);
+        // Typ 3: Objekt-Methode, des Objekts das verglichen wird (Car)
         Collections.sort(cars, Car::compareTo);
 
-        // Wenn ich die Objekt-Methode eines 'anderen' Objekts aufrufen möchte
-        Collections.sort(cars, modelComparator::compare);
+        // bisher nach natürlicher Ordnung sortiert
+        printCars(cars);
 
+        // sortiert verkehrt natürlich
+        Collections.sort(cars, Collections.reverseOrder());
+        printCars(cars);
+
+        // sortiert verkehrt nach Model
+        Collections.sort(cars, Collections.reverseOrder(modelComparator));
+        printCars(cars);
+
+        // wenn Liste bereits sortiert, dreht es ohne weitere Vergleiche die Reihenfolge der Indizes um
+        Collections.reverse(cars);
     }
 
     private static int compareByType(Car c1, Car c2) {
 
-        return c1.getType().compareTo(c2.getType());
+        return -(c1.getType().compareTo(c2.getType()));
     }
 
     private static void printCars(List<Car> cars) {
