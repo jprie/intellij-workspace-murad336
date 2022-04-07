@@ -16,6 +16,9 @@
       <module fileurl="file://$PROJECT_DIR$/h-usedcars/h-usedcars.iml" filepath="$PROJECT_DIR$/h-usedcars/h-usedcars.iml" />
       <module fileurl="file://$PROJECT_DIR$/i-carslist/i-carslist.iml" filepath="$PROJECT_DIR$/i-carslist/i-carslist.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/intellij-workspace-murad336.iml" filepath="$PROJECT_DIR$/.idea/intellij-workspace-murad336.iml" />
+      <module fileurl="file://$PROJECT_DIR$/j-collection-speedtest/j-collection-speedtest.iml" filepath="$PROJECT_DIR$/j-collection-speedtest/j-collection-speedtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/j-linkedlist/j-linkedlist.iml" filepath="$PROJECT_DIR$/j-linkedlist/j-linkedlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/k-menu-jims-finest/k-menu-jims-finest.iml" filepath="$PROJECT_DIR$/k-menu-jims-finest/k-menu-jims-finest.iml" />
     </modules>
   </component>
 </project>
