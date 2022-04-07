@@ -4,4 +4,9 @@ public class Cars {
 
         return c1.getMaxSpeed() - c2.getMaxSpeed();
     }
+
+    public static int compareByModel(Car c1, Car c2) {
+
+        return c1.getModel().compareTo(c2.getModel());
+    }
 }
