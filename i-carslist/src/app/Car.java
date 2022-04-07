@@ -4,10 +4,6 @@ import java.time.LocalDate;
 
 public class Car implements  Comparable<Car> {
 
-    @Override
-    public int compareTo(Car o2) {
-        return this.getBrand().compareTo(o2.getBrand());
-    }
 
     enum Type {
         COUPE, CABRIOLET, KLEINWAGEN, LIMOUSINE, SPORTS, SUV, TRUCK
@@ -87,4 +83,10 @@ public class Car implements  Comparable<Car> {
     public void setBuildDate(LocalDate buildDate) {
         this.buildDate = buildDate;
     }
+
+    @Override
+    public int compareTo(Car o2) {
+        return this.getBrand().compareTo(o2.getBrand());
+    }
+
 }
