@@ -68,4 +68,11 @@ public class Dish implements Comparable<Dish> {
     public void setCalories(double calories) {
         this.calories = calories;
     }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "name='" + name + "\'" +
+                "}";
+    }
 }

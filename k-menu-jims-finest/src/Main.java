@@ -2,11 +2,15 @@ import java.util.*;
 
 public class Main {
 
+    enum CourseName {
+        STARTER, MAIN, SIDE, DESSERT, DAILY
+    }
+
     public static void main(String[] args) {
 
         // Idee: Menu für 'Jim's finest'
         // als Key "Vorspeise", "Hauptspeise", "Beilage","Nachspeise"
-        HashMap<String, ArrayList<Dish>> menu = new HashMap<>();
+        HashMap<CourseName, ArrayList<Dish>> menu = new HashMap<>();
 
 
         Dish trout = new Dish("Forelle", 21.30, List.of(Dish.Allergenic.A, Dish.Allergenic.D, Dish.Allergenic.B),
@@ -30,32 +34,44 @@ public class Main {
         // Vorspeise
         // List<Dish> starters = new ArrayList<>()
 
-        menu.put("Vorspeise", new ArrayList<>());
+        // key + leere Liste
+        menu.put(CourseName.STARTER, new ArrayList<>());
 
-        menu.get("Vorspeise").add(caprese);
-        menu.get("Vorspeise").add(soup);
+        // hole leere Liste über key und befülle sie
+        menu.get(CourseName.STARTER).add(caprese);
+        // hole Liste mit Caprese
+        menu.get(CourseName.STARTER).add(soup);
 
         // Hauptspeise
-        ArrayList<Dish> mainCourses = new ArrayList<>(List.of(trout, steak));
-        menu.put("Hauptspeise", mainCourses);
+        // List.of erzeugt eine UNMODIFIABLE List
+        List<Dish> unmodifiableList = List.of(trout, steak);
+
+        // Mache daraus eine ArrayList, damit modifizierbar!
+        ArrayList<Dish> mainCourses = new ArrayList<>(unmodifiableList);
+        menu.put(CourseName.MAIN, mainCourses);
 
         Dish schnitzel = new Dish("Schnitzel", 14.50, List.of(Dish.Allergenic.F, Dish.Allergenic.C), Dish.DishType.MEAT, 250);
 
-        menu.get("Hauptspeise").add(schnitzel);
+        // im Nachhinein Speisen hinzufügen/entfernen/reihenfolge verändern
+        menu.get(CourseName.MAIN).add(schnitzel);
 
         // Beilage
-
+        menu.put(CourseName.SIDE, new ArrayList<>());
+        menu.get(CourseName.SIDE).add(rice);
+        menu.get(CourseName.SIDE).add(potatoes);
 
         // Dessert
+        menu.put(CourseName.DESSERT, new ArrayList<>());
+        menu.get(CourseName.DESSERT).addAll(List.of(tiramisu, sacher));
 
-
+        // Speisekarte fertig, ab hier Speisen finden und abfragen
         // Möchte jetzt die 2. Hauptspeise
-        menu.get("Hauptspeise").get(1);
+        menu.get(CourseName.MAIN).get(1);
 
         // Suche Dish mit Namen "Schnitzel" unter Verwendung von Menu
-        // menu.get("Schnitzel")
+        // menu.get("Schnitzel") geht nicht, da es keinen Key "Schnitzel" gibt
 
-        for (Dish dish : menu.get("Hauptspeise")) {
+        for (Dish dish : menu.get(CourseName.MAIN)) {
             if (dish.getName().equals("Schnitzel")) {
                 System.out.println(dish);
             }
@@ -63,7 +79,7 @@ public class Main {
 
         List<Dish> dishListAllergenicsEF = new ArrayList<>();
         // Liste aller Dishes mit Allergenen E oder F oder Beiden?
-        for (String key : menu.keySet()) {
+        for (CourseName key : menu.keySet()) {
 
             for (Dish dish : menu.get(key)) {
                 if (dish.getAllergenics().contains(Dish.Allergenic.E) || dish.getAllergenics().contains(Dish.Allergenic.F)) {
@@ -76,7 +92,7 @@ public class Main {
         // Für Verwendung mit TreeSet braucht es Comparable<Dish>
         Set<Dish> dishListWithPriceSmaller20 = new TreeSet<>();
         // Liste aller Dishes von denen Preis < 20
-        for (String key : menu.keySet()) {
+        for (CourseName key : menu.keySet()) {
 
             for (Dish dish : menu.get(key)) {
                 if (dish.getPrice() < 20) {
@@ -87,15 +103,55 @@ public class Main {
 
         Map<Dish.DishType, ArrayList<Dish>> dishTypeMap = new HashMap<>();
         // Erstellung einer neuen Map<DishType, Dish>
-        for (String key : menu.keySet()) {
+        for (CourseName key : menu.keySet()) {
 
             for (Dish dish : menu.get(key)) {
 
+                // Existiert die Liste für diesen Key bereits?
                 if (!dishTypeMap.containsKey(dish.getType())) {
-                    // TO BE CONTINUED
+                    // wenn nein, erzeuge leere Liste und füge sie unter dem Key in die Map ein
+                    dishTypeMap.put(dish.getType(), new ArrayList<>());
                 }
+                // in jedem Fall, hänge dish als Element an die Liste an
+                dishTypeMap.get(dish.getType()).add(dish);
             }
         }
+
+        // Idee: Tagesmenü
+        menu.put(CourseName.DAILY, new ArrayList<>());
+
+        // Zufällig eine Vorspeise fürs Mittagsmenü wählen
+//        Dish starter = getRandomDishForCourseName(menu, CourseName.STARTER);
+//        menu.get(CourseName.DAILY).add(starter);
+
+        // Hauptspeise
+//        Dish mainCourse = getRandomDishForCourseName(menu, CourseName.MAIN);
+//        menu.get(CourseName.DAILY).add(mainCourse);
+
+        // Beilage
+
+        // Dessert
+
+        // Erstellt ein Tagesmenü und fügt es in die Karte ein
+        generateDailyAndInsertInMenu(menu);
+
+        System.out.println(menu.get(CourseName.DAILY));
+    }
+
+    private static void generateDailyAndInsertInMenu(HashMap<CourseName, ArrayList<Dish>> menu) {
+        for (CourseName courseName : CourseName.values()) {
+            if (courseName != CourseName.DAILY) {
+                Dish dish = getRandomDishForCourseName(menu, courseName);
+                menu.get(CourseName.DAILY).add(dish);
+            }
+        }
+    }
+
+    private static Dish getRandomDishForCourseName(HashMap<CourseName, ArrayList<Dish>> menu,
+                                                   CourseName courseName) {
+        Random random = new Random();
+        List<Dish> dishes = menu.get(courseName);
+        return dishes.get(random.nextInt(dishes.size()));
 
     }
 }
