@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="m-calculator-fx" />
         <module name="l-jimsfinest-fx" />
       </profile>
     </annotationProcessing>
@@ -13,6 +14,7 @@
       <module name="e-connect-4-fx" target="17" />
       <module name="e-connect-four-javafx" target="17" />
       <module name="l-jimsfinest-fx" target="17" />
+      <module name="m-calculator-fx" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

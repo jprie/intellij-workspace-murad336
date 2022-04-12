@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" stylesheets="@css/styles-green.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.muradundmurad.appdevs336.mcalculatorfx.CalculatorViewController">
+   <children>
+      <AnchorPane>
+         <children>
+            <Label fx:id="display" alignment="CENTER" style="-fx-background-color: rgb(200,200,150);" styleClass="display" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <Label fx:id="messageDisplay" alignment="CENTER" styleClass="message-display" text="Msg" translateY="-60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <effect>
+                  <Blend />
+               </effect>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <HBox>
+         <children>
+            <Button id="clear-button" mnemonicParsing="false" onAction="#onClearButtonPressed" text="C" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="+/-" />
+            <Button mnemonicParsing="false" styleClass="numeric-button" />
+            <Button mnemonicParsing="false" styleClass="operator-button" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="7" />
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="8" />
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="9" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="+" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="4" />
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="5" />
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="6" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="-" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="1" />
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="2" />
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="3" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="*" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="." />
+            <Button mnemonicParsing="false" onAction="#onNumberButtonPressed" styleClass="numeric-button" text="0" />
+            <Button id="equals-button" mnemonicParsing="false" onAction="#onOperatorButtonPressed" text="=" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="/" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>
