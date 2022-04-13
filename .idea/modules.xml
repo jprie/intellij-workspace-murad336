@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/e-travel-agency/e-travel-agency.iml" filepath="$PROJECT_DIR$/e-travel-agency/e-travel-agency.iml" />
       <module fileurl="file://$PROJECT_DIR$/f-abstract-classes/f-abstract-classes.iml" filepath="$PROJECT_DIR$/f-abstract-classes/f-abstract-classes.iml" />
       <module fileurl="file://$PROJECT_DIR$/f-graphics/f-graphics.iml" filepath="$PROJECT_DIR$/f-graphics/f-graphics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../intellij-workspace-murad318/f-photolibrary/f-photolibrary.iml" filepath="$PROJECT_DIR$/../intellij-workspace-murad318/f-photolibrary/f-photolibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/f-simple-calculator/f-simple-calculator.iml" filepath="$PROJECT_DIR$/f-simple-calculator/f-simple-calculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/g-pocket/g-pocket.iml" filepath="$PROJECT_DIR$/g-pocket/g-pocket.iml" />
       <module fileurl="file://$PROJECT_DIR$/h-used-cars.iml" filepath="$PROJECT_DIR$/h-used-cars.iml" />
@@ -21,6 +22,7 @@
       <module fileurl="file://$PROJECT_DIR$/k-menu-jims-finest/k-menu-jims-finest.iml" filepath="$PROJECT_DIR$/k-menu-jims-finest/k-menu-jims-finest.iml" />
       <module fileurl="file://$PROJECT_DIR$/l-jimsfinest-fx/l-jimsfinest-fx.iml" filepath="$PROJECT_DIR$/l-jimsfinest-fx/l-jimsfinest-fx.iml" />
       <module fileurl="file://$PROJECT_DIR$/m-calculator-fx/m-calculator-fx.iml" filepath="$PROJECT_DIR$/m-calculator-fx/m-calculator-fx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/n-photo-library/n-photo-library.iml" filepath="$PROJECT_DIR$/n-photo-library/n-photo-library.iml" />
     </modules>
   </component>
 </project>
