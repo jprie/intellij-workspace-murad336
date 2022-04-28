@@ -2,12 +2,12 @@ package at.muradundmurad.appdevs.nphotolibrary.controller;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.function.Predicate;
 
+import at.muradundmurad.appdevs.nphotolibrary.model.Photo;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -15,6 +15,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import org.slf4j.Logger;
@@ -30,61 +31,91 @@ public class PhotoFilterController extends BaseController {
     @FXML
     private URL location;
 
-    @FXML
-    private ChoiceBox<FilterType> filterChoiceBox;
 
     @FXML
-    private TextField filterTextField;
+    private TextField titleFilterTextField;
+
+    @FXML
+    private DatePicker afterFilterDatePicker;
+
+    @FXML
+    private DatePicker beforeFilterDatePicker;
 
     @FXML
     void onFilterAction(ActionEvent event) {
 
-
+        filterTable();
 
     }
 
+    private Map<String, Predicate> predicateMap = new HashMap<>();
+
     @FXML
     void onFilterTextFieldReleased(KeyEvent event) {
+        
+        
+        TextField textField = (TextField)event.getTarget();
+        String nodeId = textField.getId();
+        final String text = textField.getText();
+
+        switch(nodeId) {
+            case "titleFilterTextField" ->
+                updateTitleFilter(nodeId, text);
+        }
 
         filterTable();
     }
 
+    void onDatePickerAction(ActionEvent event) {
+
+        DatePicker datePicker = (DatePicker) event.getTarget();
+        String nodeId = datePicker.getId();
+
+        LocalDate selectedDate = datePicker.getValue();
+
+        log.info("DatePicker filter {} {}", nodeId, selectedDate);
+
+        updateDateFilter(nodeId, selectedDate);
+        filterTable();
+    }
+
+    private void updateTitleFilter(String nodeId, String text) {
+        final Predicate<Photo> titleFilterPredicate = (photo -> photo.getTitle().toLowerCase().contains(text));
+        updateFilter(nodeId, text, titleFilterPredicate);
+    }
+
+    private void updateDateFilter(String nodeId, LocalDate date) {
+        final Predicate<Photo> beforeDateFilterPredicate = (photo -> photo.getDate().isBefore(date));
+        final Predicate<Photo> afterDateFilterPredicate = (photo -> photo.getDate().isAfter(date));
+        switch(nodeId) {
+            case "beforeFilterDatePicker" -> updateFilter(nodeId, date, beforeDateFilterPredicate);
+            case "afterFilterDatePicker" -> updateFilter(nodeId, date, afterDateFilterPredicate);
+        }
+    }
+
+    private void updateFilter(String nodeId, Object content, Predicate<Photo> filterPredicate) {
+
+        predicateMap.remove(nodeId);
+        if (content != null) {
+            predicateMap.put(nodeId, filterPredicate);
+        }
+    }
+
     @FXML
     void initialize() {
-        assert filterChoiceBox != null : "fx:id=\"filterChoiceBox\" was not injected: check your FXML file 'photo-filter-view.fxml'.";
-        assert filterTextField != null : "fx:id=\"filterTextField\" was not injected: check your FXML file 'photo-filter-view.fxml'.";
 
-        filterChoiceBox.setItems(FXCollections.observableList(Arrays.stream(FilterType.values()).toList()));
-        filterTextField.setOnKeyReleased(this::onFilterTextFieldReleased);
-        filterChoiceBox.getSelectionModel().select(0);
-        filterChoiceBox.getSelectionModel().selectedItemProperty().addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                filterTable();
-            }
-        });
+        titleFilterTextField.setOnKeyReleased(this::onFilterTextFieldReleased);
+        beforeFilterDatePicker.setOnAction(this::onDatePickerAction);
+        afterFilterDatePicker.setOnAction(this::onDatePickerAction);
+
     }
 
 
     private void filterTable() {
-        LocalDate parsedDate;
-        String filterText = filterTextField.getText().toLowerCase();
-        try {
-            parsedDate = LocalDate.parse(filterTextField.getText());
-        } catch (DateTimeParseException e) {
-            log.info("Not a valid date: {}", filterTextField.getText());
-            parsedDate = LocalDate.now();
-        }
 
-        final LocalDate finalDate = parsedDate;
-        switch (filterChoiceBox.getValue()) {
-            case null -> log.info("No filter selected");
-            case TITLE -> model.filteredPhotos.setPredicate(photo -> photo.getTitle().toLowerCase().contains(filterText));
-            case PHOTOGRAPHER -> model.filteredPhotos.setPredicate(photo -> photo.getPhotographer().getFullname().toLowerCase().contains(filterText));
-            case DATE_BEFORE -> model.filteredPhotos.setPredicate(photo -> photo.getDate().isBefore(finalDate));
-            case DATE_AFTER -> model.filteredPhotos.setPredicate(photo -> photo.getDate().isAfter(finalDate));
-        }
+        log.info("Filters: {}", predicateMap);
+        Predicate<Photo> combinedPredicate = predicateMap.values().stream().reduce(x->true, Predicate::and);
+        model.filteredPhotos.setPredicate(combinedPredicate);
 
     }
-
 }
