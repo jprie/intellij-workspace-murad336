@@ -1,0 +1,33 @@
+.button {
+
+    -fx-pref-width: 80px;
+    -fx-pref-height: 80px;
+
+    -fx-background-color: lightgray;
+    -fx-background-insets: 4;
+    -fx-background-radius: 5;
+
+    -fx-font-size: 18px;
+}
+
+.button:hover {
+     -fx-background-color: gray;
+}
+
+.button:pressed {
+      -fx-background-color: white;
+}
+
+.numeric-button {
+    -fx-text-fill: blue;
+}
+
+.operator-button {
+    -fx-text-fill: red;
+}
+
+#display {
+    -fx-padding: 5;
+    -fx-background-color: aqua;
+    -fx-font-size: 18px;
+}

@@ -21,7 +21,9 @@
       <module fileurl="file://$PROJECT_DIR$/j-linkedlist/j-linkedlist.iml" filepath="$PROJECT_DIR$/j-linkedlist/j-linkedlist.iml" />
       <module fileurl="file://$PROJECT_DIR$/k-menu-jims-finest/k-menu-jims-finest.iml" filepath="$PROJECT_DIR$/k-menu-jims-finest/k-menu-jims-finest.iml" />
       <module fileurl="file://$PROJECT_DIR$/l-jimsfinest-fx/l-jimsfinest-fx.iml" filepath="$PROJECT_DIR$/l-jimsfinest-fx/l-jimsfinest-fx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/m-calculator/m-calculator.iml" filepath="$PROJECT_DIR$/m-calculator/m-calculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/m-calculator-fx/m-calculator-fx.iml" filepath="$PROJECT_DIR$/m-calculator-fx/m-calculator-fx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/n-photo-library/n--photo-library/n--photo-library.iml" filepath="$PROJECT_DIR$/n-photo-library/n--photo-library/n--photo-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/n-photo-library/n-photo-library.iml" filepath="$PROJECT_DIR$/n-photo-library/n-photo-library.iml" />
     </modules>
   </component>

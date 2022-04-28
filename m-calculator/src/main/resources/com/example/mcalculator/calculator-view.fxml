@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mcalculator.CalculatorController">
+   <children>
+      <AnchorPane>
+         <children>
+            <Label id="display" fx:id="display" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="44.0" text="Display" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </AnchorPane>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onClearButtonPressed" styleClass="numeric-button" text="C" />
+            <Button mnemonicParsing="false" onAction="#onInvertDisplayedNumberButtonPressed" styleClass="operator-button" text="+/-" />
+            <Button disable="true" mnemonicParsing="false" styleClass="numeric-button" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="mod" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="7" />
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="8" />
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="9" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="+" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="4" />
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="5" />
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="6" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="-" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" prefHeight="80.0" prefWidth="80.0" styleClass="numeric-button" text="1" />
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="2" />
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="3" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="*" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="." />
+            <Button mnemonicParsing="false" onAction="#onNumericButtonPressed" styleClass="numeric-button" text="0" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="=" />
+            <Button mnemonicParsing="false" onAction="#onOperatorButtonPressed" styleClass="operator-button" text="/" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

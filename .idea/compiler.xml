@@ -6,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="m-calculator" />
+        <module name="n--photo-library" />
         <module name="f-photolibrary" />
         <module name="n-photo-library" />
         <module name="m-calculator-fx" />
@@ -17,7 +19,10 @@
       <module name="e-connect-four-javafx" target="17" />
       <module name="f-photolibrary" target="17" />
       <module name="l-jimsfinest-fx" target="17" />
+      <module name="m--calculator" target="17" />
+      <module name="m-calculator" target="17" />
       <module name="m-calculator-fx" target="17" />
+      <module name="n--photo-library" target="17" />
       <module name="n-photo-library" target="17" />
     </bytecodeTargetLevel>
   </component>
