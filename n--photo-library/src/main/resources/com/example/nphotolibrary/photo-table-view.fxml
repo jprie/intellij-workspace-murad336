@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nphotolibrary.controller.PhotoTableController">
+   <children>
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Titel" />
+          <TableColumn fx:id="photographerColumn" prefWidth="75.0" text="Fotograf" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Datum" />
+            <TableColumn fx:id="sizeColumn" prefWidth="75.0" text="Größe" />
+            <TableColumn fx:id="commentColumn" prefWidth="75.0" text="Kommentar" />
+            <TableColumn fx:id="previewColumn" prefWidth="75.0" text="Vorschau" />
+        </columns>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TableView>
+   </children>
+</AnchorPane>

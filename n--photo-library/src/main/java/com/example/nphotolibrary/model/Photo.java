@@ -58,6 +58,15 @@ public class Photo {
                 '}';
     }
 
+    // size
+    public int getSize() {
+        if (imageBytes == null) {
+            return 0;
+        } else {
+            return imageBytes.length;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

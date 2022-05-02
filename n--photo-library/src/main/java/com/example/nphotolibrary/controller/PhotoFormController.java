@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
-public class PhotoFormController {
+public class PhotoFormController extends BaseController {
 
     @FXML
     private ResourceBundle resources;
@@ -54,7 +54,7 @@ public class PhotoFormController {
     @FXML
     private TextField titleTextField;
 
-    private PhotoLibraryModel model = new PhotoLibraryModel();
+//    private PhotoLibraryModel model = new PhotoLibraryModel();
 
     @FXML
     void onAddButtonPressed(ActionEvent event) {
@@ -66,9 +66,12 @@ public class PhotoFormController {
         String comment = commentTextArea.getText();
         byte[] imageBytes = Photo.imageBytesFromPath(path);
 
-        // im Model speichern
+
         Photo photo = new Photo(0l, title, photographer, date, path, comment, imageBytes);
         System.out.println(photo);
+        // im Model speichern
+        model.photos.add(photo);
+        System.out.println("Updated photos list:" + model.photos);
     }
 
     @FXML
@@ -108,6 +111,7 @@ public class PhotoFormController {
         assert titleTextField != null : "fx:id=\"titleTextField\" was not injected: check your FXML file 'photo-form-view.fxml'.";
 
         photographerChoiceBox.setItems(model.photographers);
+        System.out.println("Init photos:" + model.photos);
     }
 
 }

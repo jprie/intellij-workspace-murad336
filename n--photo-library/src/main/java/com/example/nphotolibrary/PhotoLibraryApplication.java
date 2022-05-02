@@ -10,7 +10,7 @@ import java.io.IOException;
 public class PhotoLibraryApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PhotoLibraryApplication.class.getResource("photo-form-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PhotoLibraryApplication.class.getResource("photo-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Photo Library");
         stage.setScene(scene);

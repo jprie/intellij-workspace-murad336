@@ -16,11 +16,8 @@ public class Photographer {
 
     @Override
     public String toString() {
-        return "Photographer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return firstName + " " +
+                lastName;
     }
 
     @Override
